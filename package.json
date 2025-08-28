@@ -2,6 +2,13 @@
   "name": "temp-blog",
   "version": "0.1.0",
   "private": true,
+  "description": "Ecokayiza's personal homepage and blog, built with Next.js and Tailwind CSS.",
+  "author": "Ecokayiza <ecokayiza@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecokayiza/Home_Page"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

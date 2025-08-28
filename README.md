@@ -1,62 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Home_Page
 
-## Getting Started
+这是一个基于 Next.js + Tailwind CSS 的个人博客与主页项目，支持动态内容、Markdown 渲染、粒子特效背景、Strapi 后端集成。
 
-First, run the development server:
+## 功能
+- Next.js 14 App Router
+- Tailwind CSS 美化
+- Markdown/HTML 渲染
+- 粒子与渐变炫酷背景
+- Strapi 内容管理
+- 支持自定义按钮、图片、SVG 图标
+- 搜索、导航、响应式布局
 
+## 本地开发
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-### Project Structure
-```
-* app/: This directory contains the layout and pages for your site.
-    * app/page.tsx: The code for your homepage.
-    * app/posts/[slug]/page.tsx: The template for individual blog post pages.
-* components/: This holds reusable parts of your UI, like the Profile.tsx component and the icons.
-* lib/: Contains the logic for fetching your post data (posts.ts).
-* public/: All your static assets, like images, are stored here.
-* `posts/`: This is where you add your blog posts.
-
-How to Add a New Post
-
-To create a new blog post, simply add a new Markdown file (e.g., my-new-post.md) inside the posts/ directory. Make sure to include the title and date at the
-top, followed by a --- separator for the preview, like this:
-
-1 ---
-2 title: 'My New Post'
-3 date: '2024-08-26'
-4 ---
-5
-6 This is the preview of my new post.
-7 ---
-8
-9 This is the rest of the content of my new post.
 ```
 
+## 生产部署（Linux服务器）
+1. 上传项目到服务器
+2. 安装依赖并构建：
+   ```bash
+   npm install
+   npm run build
+   npm start
+   ```
+3. 推荐用 Nginx 反向代理到 127.0.0.1:3000：
+   ```nginx
+   location / {
+       proxy_pass http://127.0.0.1:3000;
+       proxy_http_version 1.1;
+       proxy_set_header Upgrade $http_upgrade;
+       proxy_set_header Connection "upgrade";
+       proxy_set_header Host $host;
+       proxy_cache_bypass $http_upgrade;
+   }
+   ```
+4. 其它静态资源和 API 可按需配置 Nginx location。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 环境要求
+- Node.js >= 18
+- 推荐 Linux 服务器
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 常见问题
+- 粒子背景不显示：请确保 `FancyParticlesBG` 组件已引入且 CSS 正确。
+- 端口冲突：如 3000 被占用，可在 `package.json` 的 `start` 命令中指定其它端口。
+- Nginx 配置问题：请参考上方 location 配置。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+MIT
