@@ -8,7 +8,7 @@ const Profile = () => {
   return (
     <section className="text-center py-8">
       <Image
-        src="/pictures/profile.jpg"
+        src="/profile.jpg"
         alt="Profile Picture"
         width={96}
         height={96}
