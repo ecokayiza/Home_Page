@@ -1,14 +1,12 @@
 import Image from 'next/image';
 import GitHubIcon from './icons/GitHubIcon';
-import TwitterIcon from './icons/TwitterIcon';
-import LinkedInIcon from './icons/LinkedInIcon';
 import BilibiliIcon from './icons/BilibiliIcon';
 
 const Profile = () => {
   return (
     <section className="text-center py-8">
       <Image
-        src="/pictures/profile.jpg"
+        src="/profile.jpg"
         alt="Profile Picture"
         width={96}
         height={96}

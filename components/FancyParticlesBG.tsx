@@ -25,6 +25,7 @@ export default function FancyParticlesBG() {
     }));
 
     function draw() {
+      if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
       for (let p of particles) {
         ctx.beginPath();
