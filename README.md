@@ -17,26 +17,24 @@
 ```
 /
 ├── app/                      # Next.js App Router 核心目录
-│   ├── api/                  # API 路由 (如果需要)
 │   ├── posts/                # 帖子相关页面
 │   │   ├── [slug]/page.tsx   # 单个帖子详情页 (动态路由)
 │   │   └── page.tsx          # 帖子列表页
-│   ├── favicon.ico           # 网站图标
 │   ├── globals.css           # 全局 CSS 样式
 │   ├── layout.tsx            # 根布局
 │   └── page.tsx              # 网站主页 (/)
 │
 ├── components/               # 可重用 React 组件
 │   ├── icons/                # SVG 图标组件
+│   ├── Profile.tsx           # 个人资料组件
 │   ├── FancyParticlesBG.tsx  # 粒子背景组件
-│   ├── MarkdownRenderer.tsx  # Markdown 渲染器
-│   └── PostList.tsx          # 帖子列表客户端组件 (用于搜索)
+│   └── MarkdownRenderer.tsx  # Markdown 渲染器
 │
 ├── lib/                      # 辅助函数和库
 │   └── strapi.ts             # 与 Strapi API 交互的函数
 │
 ├── public/                   # 静态资源目录
-│   └── vercel.svg            # 示例图片
+│   └── favicon.svg           
 │
 ├── .gitignore                # Git 忽略文件配置
 ├── next.config.mjs           # Next.js 配置文件
