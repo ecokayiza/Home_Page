@@ -1,6 +1,7 @@
 # Home_Page
 
-这是一个基于 Next.js + Tailwind CSS 的个人博客与主页项目，支持动态内容、Markdown 渲染、粒子特效背景、Strapi 后端集成。
+这是一个基于 Next.js + Tailwind CSS 的个人博客与主页项目，支持动态内容、Obsidian Style Markdown 渲染、粒子特效背景、Strapi 后端集成。
+
 
 ## 功能
 - Next.js 14 App Router
@@ -10,6 +11,40 @@
 - Strapi 内容管理
 - 支持自定义按钮、图片、SVG 图标
 - 搜索、导航、响应式布局
+
+## 项目结构
+
+```
+/
+├── app/                      # Next.js App Router 核心目录
+│   ├── api/                  # API 路由 (如果需要)
+│   ├── posts/                # 帖子相关页面
+│   │   ├── [slug]/page.tsx   # 单个帖子详情页 (动态路由)
+│   │   └── page.tsx          # 帖子列表页
+│   ├── favicon.ico           # 网站图标
+│   ├── globals.css           # 全局 CSS 样式
+│   ├── layout.tsx            # 根布局
+│   └── page.tsx              # 网站主页 (/)
+│
+├── components/               # 可重用 React 组件
+│   ├── icons/                # SVG 图标组件
+│   ├── FancyParticlesBG.tsx  # 粒子背景组件
+│   ├── MarkdownRenderer.tsx  # Markdown 渲染器
+│   └── PostList.tsx          # 帖子列表客户端组件 (用于搜索)
+│
+├── lib/                      # 辅助函数和库
+│   └── strapi.ts             # 与 Strapi API 交互的函数
+│
+├── public/                   # 静态资源目录
+│   └── vercel.svg            # 示例图片
+│
+├── .gitignore                # Git 忽略文件配置
+├── next.config.mjs           # Next.js 配置文件
+├── package.json              # 项目依赖和脚本
+├── postcss.config.js         # PostCSS 配置文件
+├── README.md                 # 项目说明文件
+└── tailwind.config.ts        # Tailwind CSS 配置文件
+```
 
 ## 本地开发
 ```bash
@@ -43,7 +78,6 @@ npm run dev
 - 推荐 Linux 服务器
 
 ## 常见问题
-- 粒子背景不显示：请确保 `FancyParticlesBG` 组件已引入且 CSS 正确。
 - 端口冲突：如 3000 被占用，可在 `package.json` 的 `start` 命令中指定其它端口。
 - Nginx 配置问题：请参考上方 location 配置。
 
