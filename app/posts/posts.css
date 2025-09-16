@@ -1,327 +1,110 @@
-/* Posts Page Styles - Obsidian Theme */
-
-/* Navigation Styles */
-.obsidian-nav {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 1rem;
+/* 使用 CSS 变量来保持与 Tailwind 设计体系的一致性 */
+:root {
+  --preview-text-color: #374151; /* gray-700 */
+  --preview-link-color: #2563eb; /* blue-600 */
+  --preview-link-hover-color: #1d4ed8; /* blue-700 */
+  --preview-code-bg: #f3f4f6; /* gray-100 */
+  --preview-border-color: #e5e7eb; /* gray-200 */
 }
 
-.obsidian-nav-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  background: var(--obsidian-bg-tertiary);
-  border: 1px solid var(--obsidian-border);
-  border-radius: 6px;
-  color: var(--obsidian-text-secondary);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.obsidian-nav-btn:hover {
-  background: var(--obsidian-accent-light);
-  border-color: var(--obsidian-accent);
-  color: var(--obsidian-accent);
-  transform: translateY(-1px);
-}
-
-/* Post Page Layout */
-.obsidian-post-container {
-  min-height: 100vh;
-  background: var(--obsidian-bg-primary);
-  color: var(--obsidian-text-primary);
-  padding: 2rem;
-  font-family: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-}
-
-.obsidian-post-content {
-  max-width: 800px;
-  margin: 0 auto;
-  background: var(--obsidian-bg-secondary);
-  border: 1px solid var(--obsidian-border);
-  border-radius: 8px;
+/* 帖子预览容器，用于创建底部渐变效果 */
+.preview-outer {
+  position: relative;
+  max-height: 12rem; /* 大约 8-10 行文本的高度，可根据需要调整 */
   overflow: hidden;
 }
 
-.obsidian-post-header {
-  padding: 2rem;
-  border-bottom: 1px solid var(--obsidian-border);
-  background: var(--obsidian-bg-tertiary);
+/* 在容器底部添加一个蒙版，以示内容被截断 */
+.preview-outer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  background: linear-gradient(to bottom, transparent, white);
+  pointer-events: none; /* 确保不会遮挡下方的文本选择 */
 }
 
-.obsidian-post-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--obsidian-text-primary);
-  margin: 0 0 1rem 0;
-  line-height: 1.3;
-}
-
-.obsidian-post-meta {
-  color: var(--obsidian-text-secondary);
-  font-size: 0.875rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.obsidian-post-body {
-  padding: 2rem;
-  line-height: 1.8;
-}
-
-/* Typography */
-.obsidian-post-body h1,
-.obsidian-post-body h2,
-.obsidian-post-body h3,
-.obsidian-post-body h4,
-.obsidian-post-body h5,
-.obsidian-post-body h6 {
-  color: var(--obsidian-text-primary);
-  margin: 2rem 0 1rem 0;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.obsidian-post-body h1 { font-size: 1.875rem; }
-.obsidian-post-body h2 { font-size: 1.5rem; }
-.obsidian-post-body h3 { font-size: 1.25rem; }
-.obsidian-post-body h4 { font-size: 1.125rem; }
-.obsidian-post-body h5 { font-size: 1rem; }
-.obsidian-post-body h6 { font-size: 0.875rem; }
-
-.obsidian-post-body p {
-  margin: 0 0 1.5rem 0;
-  color: var(--obsidian-text-primary);
-  line-height: 1.8;
-}
-
-.obsidian-post-body strong {
-  color: var(--obsidian-accent);
-  font-weight: 700;
-}
-
-.obsidian-post-body em {
-  color: var(--obsidian-accent-hover);
-  font-style: italic;
-}
-
-/* Links */
-.obsidian-post-body a {
-  color: var(--obsidian-link);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.obsidian-post-body a:hover {
-  color: var(--obsidian-link-hover);
-  border-bottom-color: var(--obsidian-link-hover);
-}
-
-/* Lists */
-.obsidian-post-body ul,
-.obsidian-post-body ol {
-  margin: 1.5rem 0;
-  padding-left: 2rem;
-  color: var(--obsidian-text-primary);
-}
-
-.obsidian-post-body li {
-  margin: 0.5rem 0;
+/* 预览内容的具体样式 */
+.preview-content {
+  color: var(--preview-text-color);
   line-height: 1.6;
 }
 
-.obsidian-post-body ul li::marker {
-  color: var(--obsidian-accent);
+/* 预览内容中的元素样式 */
+.preview-content > * {
+  margin-bottom: 0.75em;
 }
 
-.obsidian-post-body ol li::marker {
-  color: var(--obsidian-accent);
+.preview-content h1,
+.preview-content h2,
+.preview-content h3,
+.preview-content h4,
+.preview-content h5,
+.preview-content h6 {
   font-weight: 600;
+  line-height: 1.3;
 }
 
-/* Code */
-.obsidian-post-body code {
-  background: var(--obsidian-code-bg);
-  color: var(--obsidian-accent);
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
-  border: 1px solid var(--obsidian-code-border);
+.preview-content h1 { font-size: 1.5em; }
+.preview-content h2 { font-size: 1.25em; }
+.preview-content h3 { font-size: 1.1em; }
+
+.preview-content p {
+  margin-bottom: 1em;
 }
 
-.obsidian-post-body pre {
-  background: var(--obsidian-code-bg);
-  border: 1px solid var(--obsidian-code-border);
-  border-radius: 6px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  overflow-x: auto;
-  line-height: 1.5;
-}
-
-.obsidian-post-body pre code {
-  background: transparent;
-  border: none;
-  padding: 0;
-  color: var(--obsidian-text-primary);
-}
-
-/* Blockquotes */
-.obsidian-post-body blockquote {
-  border-left: 4px solid var(--obsidian-accent);
-  background: var(--obsidian-accent-light);
-  margin: 1.5rem 0;
-  padding: 1rem 1.5rem;
-  color: var(--obsidian-text-secondary);
-  border-radius: 0 6px 6px 0;
-}
-
-.obsidian-post-body blockquote p {
-  margin: 0.5rem 0;
-}
-
-/* Tables */
-.obsidian-post-body table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  background: var(--obsidian-bg-tertiary);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.obsidian-post-body th,
-.obsidian-post-body td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--obsidian-border);
-}
-
-.obsidian-post-body th {
-  background: var(--obsidian-bg-secondary);
-  color: var(--obsidian-text-primary);
-  font-weight: 600;
-}
-
-.obsidian-post-body td {
-  color: var(--obsidian-text-secondary);
-}
-
-/* Horizontal Rule */
-.obsidian-post-body hr {
-  border: none;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--obsidian-accent), transparent);
-  margin: 2rem 0;
-}
-
-/* Images */
-.obsidian-post-body img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  border: 1px solid var(--obsidian-border);
-  margin: 1rem 0;
-}
-
-/* Custom Button Styles (from post-buttons.css) */
-.bluewhite-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.5rem;
-  background: var(--obsidian-accent);
-  color: var(--obsidian-text-primary);
-  border-radius: 6px;
+.preview-content a {
+  color: var(--preview-link-color);
   text-decoration: none;
-  font-weight: 600;
-  border: 1px solid var(--obsidian-accent);
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
-.bluewhite-button:hover,
-.bluewhite-button:focus {
-  background: var(--obsidian-accent-hover);
-  border-color: var(--obsidian-accent-hover);
-  transform: translateY(-1px);
+.preview-content a:hover {
+  color: var(--preview-link-hover-color);
+  text-decoration: underline;
 }
 
-.github-link {
-  color: var(--obsidian-link) !important;
-  text-decoration: none !important;
-  font-weight: 500;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s ease;
-  padding-bottom: 2px;
+.preview-content ul,
+.preview-content ol {
+  padding-left: 1.5rem;
 }
 
-.github-link:hover,
-.github-link:focus {
-  color: var(--obsidian-link-hover) !important;
-  border-bottom-color: var(--obsidian-link-hover);
-  text-decoration: none !important;
-  outline: none;
+.preview-content blockquote {
+  border-left: 4px solid var(--preview-border-color);
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+  color: #6b7280; /* gray-500 */
 }
 
-/* Preview Styles (from post-preview.css) */
-.preview-content {
-  min-height: 100px;
-  max-height: 100px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 7;
-  white-space: pre-line;
-  text-overflow: ellipsis;
-  padding: 10px 14px;
-  background: var(--obsidian-bg-secondary);
-  color: var(--obsidian-text-secondary);
-  border-radius: 6px;
-  border: 1px solid var(--obsidian-border);
+.preview-content code {
+  background-color: var(--preview-code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: var(--font-geist-mono);
 }
 
-.preview-outer {
-  display: flex;
-  align-items: center;
-  min-height: 70px;
-  max-height: 70px;
-  background: var(--obsidian-bg-tertiary);
-  border-radius: 6px;
+.preview-content pre {
+  background-color: var(--preview-code-bg);
   padding: 1rem;
-  margin: 1rem 0;
+  border-radius: 8px;
+  overflow-x: auto;
 }
 
+.preview-content pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* 预览中的图片样式 */
 .preview-img {
   max-width: 100%;
-  max-height: 60px;
-  object-fit: contain;
-  border-radius: 4px;
-  margin: 0.2em 0;
-  border: 1px solid var(--obsidian-border);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .obsidian-post-container {
-    padding: 1rem;
-  }
-  
-  .obsidian-post-header,
-  .obsidian-post-body {
-    padding: 1.5rem;
-  }
-  
-  .obsidian-post-title {
-    font-size: 1.5rem;
-  }
-  
-  .obsidian-post-body {
-    font-size: 0.875rem;
-  }
+  max-height: 10rem; /* 限制图片在预览中的最大高度 */
+  border-radius: 8px;
+  object-fit: cover; /* 确保图片比例不变形 */
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }

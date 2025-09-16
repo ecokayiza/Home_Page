@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
+import FancyParticlesBG from "@/components/FancyParticlesBG";
 
 export const metadata: Metadata = {
   title: "Ecokayiza's web",
@@ -18,7 +19,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
       </head>
-      <body>{children}</body>
+      <body>
+        <FancyParticlesBG />
+        <div className="fancy-bg fixed inset-0 -z-10" />
+        {children}
+      </body>
     </html>
   );
 }

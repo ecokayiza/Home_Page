@@ -6,7 +6,8 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import './posts.css';
-import FancyParticlesBG from '@/components/FancyParticlesBG';
+import HomeIcon from '@/components/icons/HomeIcon';
+
 
 
 function renderBody(body: any) {
@@ -51,12 +52,11 @@ export default function PostsPage() {
   });
   return (
     <>
-      <FancyParticlesBG />
       <div className="fancy-bg-dynamic fixed inset-0 -z-10" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="flex items-center mb-8">
-          <Link href="/" className="text-blue-600 hover:text-blue-800 p-2 rounded-full transition-colors" title="Back to Home">
-            <img src="/home.svg" alt="Home" className="w-7 h-7" />
+          <Link href="/" className="hover:text-blue-800 p-2 rounded-full transition-colors" title="Back to Home">
+            <HomeIcon className="w-7 h-7" />
           </Link>
           <h2 className="text-3xl font-bold text-gray-800 ml-4">All Posts</h2>
         </header>

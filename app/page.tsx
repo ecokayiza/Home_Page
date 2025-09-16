@@ -10,7 +10,6 @@ import Profile from '@/components/Profile';
 import PostsIcon from '@/components/icons/PostsIcon';
 import AdminIcon from '@/components/icons/AdminIcon';
 import LivestreamIcon from '@/components/icons/LivestreamIcon';
-import FancyParticlesBG from '@/components/FancyParticlesBG';
 
 function renderBody(body: any) {
   if (!body) return <span className="text-gray-400 italic">No preview available.</span>;
@@ -62,7 +61,6 @@ export default function Home() {
 
   return (
     <>
-      <FancyParticlesBG />
       <div className="fancy-bg fixed inset-0 -z-10" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="flex justify-end space-x-4 mb-8">
@@ -90,7 +88,7 @@ export default function Home() {
                 <div className="text-gray-400">No posts found.</div>
               ) : (
                 posts.map((post: any) => (
-                  <article key={post.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                  <article key={post.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-72">
                     <header>
                       <h3 className="text-2xl font-bold mb-2">
                         <Link href={`/posts/${post.id}`} className="text-gray-900 hover:text-blue-600 transition-colors">
@@ -107,10 +105,10 @@ export default function Home() {
                               : ''}
                       </p>
                     </header>
-                    <div className="text-gray-700">
+                    <div className="text-gray-700 preview-outer h-24">
                       <div className="preview-content">{renderBody(post.body)}</div>
                     </div>
-                    <footer className="mt-4">
+                      <footer className="mt-auto pt-4">
                       <Link href={`/posts/${post.id}`} className="text-blue-600 hover:underline font-semibold">
                         Read more
                       </Link>
