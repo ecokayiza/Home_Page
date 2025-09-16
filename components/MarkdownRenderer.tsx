@@ -55,19 +55,6 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
   }
 
   const processedContent = preprocessMarkdown(content);
-
-  const copyToClipboard = async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (err) {
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-    }
-  };
   
   return (
     <div className={className}>
@@ -103,7 +90,6 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
               <div className="code-block-wrapper">
                 <div className="code-block-header">
                   <span className="code-block-lang">{language}</span>
-                  <button className="code-block-copy" onClick={() => copyToClipboard(codeContent)}>Copy</button>
                 </div>
                 <pre {...props}>{children}</pre>
               </div>

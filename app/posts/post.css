@@ -187,45 +187,11 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* 代码块头部 */
-.code-block-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--post-border-color);
-}
 
-/* 语言标签 */
-.code-block-lang {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.8rem;
-  color: #6b7280; /* gray-500 */
-  text-transform: uppercase;
-}
 @media (prefers-color-scheme: dark) {
   .code-block-lang {
     color: #9ca3af; /* gray-400 */
   }
-}
-
-/* 复制按钮 */
-.code-block-copy {
-  font-size: 0.8rem;
-  padding: 0.25rem 0.5rem;
-  background-color: transparent;
-  border: 1px solid var(--post-border-color);
-  border-radius: 0.25rem;
-  color: #6b7280; /* gray-500 */
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.code-block-copy:hover {
-  background-color: var(--post-border-color);
-  color: var(--post-text-color);
-}
-.code-block-copy:active {
-  transform: scale(0.95);
 }
 
 /* 代码块主体 (<pre>) */
